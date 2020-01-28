@@ -1,7 +1,12 @@
 <!doctype HTML>
 <html>
-<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-<script src="https://raw.githack.com/jeromeetienne/AR.js/2.1.4/aframe/build/aframe-ar.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>A-Frame & AR</title>
+	</head>
+	<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+	<script src="https://raw.githack.com/jeromeetienne/AR.js/2.1.4/aframe/build/aframe-ar.js"></script>
 	<style>
 		.control {
 			position: absolute;
@@ -42,16 +47,19 @@
 		let box = document.createElement('a-box');
 		box.id="#box";
 		box.setAttribute("color", "red");
+		box.setAttribute("position", "0 0 0");
 		let sphere = document.createElement('a-sphere');
 		sphere.id="#sphere";
 		sphere.setAttribute("color", "green");
 		sphere.setAttribute("radius", "1");
+		sphere.setAttribute("position", "0 0 0");
 		let cone = document.createElement('a-cone');
 		cone.id="#cone";
 		cone.setAttribute("color", "blue");
 		cone.setAttribute("radius-bottom", "2");
 		cone.setAttribute("radiustop", "0.5");
 		cone.setAttribute("height", "1");
+		cone.setAttribute("position", "0 0 0");
 		marker.appendChild(box);
 		marker.appendChild(sphere);
 		marker.appendChild(cone);
