@@ -1,0 +1,85 @@
+<!doctype HTML>
+<html>
+<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+<script src="https://raw.githack.com/jeromeetienne/AR.js/2.1.4/aframe/build/aframe-ar.js"></script>
+	<style>
+		.control {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: auto;
+			display: flex;
+		}
+		.control .button {
+			border-radius: 100%;
+			background-color: rgba(255,255,255,0.8);
+			font: #000;
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+	</style>
+	<body style='margin : 0px; overflow: hidden;'>
+		<a-scene id='#scene' embedded arjs="debugUIEnabled:false;">
+			<a-marker id="#marker" type="pattern" url="pattern-custom.patt">
+			</a-marker>
+			<a-camera
+			  position="0 0 1"
+			  cursor-visible="true"
+			  cursor-scale="2"
+			  cursor-color="#0095DD"
+			  cursor-opacity="0.5">
+			</a-camera>
+		</a-scene>
+		<div class="control">
+			<div id="#a" class="button">1</div>
+			<div id="#b" class="button">2</div>
+			<div id="#c" class="button">3</div>
+		</div>
+	</body>
+	<script>
+		const scene = document.getElementById('#scene');
+		const marker = document.getElementById('#marker');
+		const buttonA = document.getElementById('#a');
+		const buttonB = document.getElementById('#b');
+		const buttonC = document.getElementById('#c');
+
+		let box = document.createElement('a-box');
+		box.id="#box";
+		box.setAttribute("color", "red");
+		let sphere = document.createElement('a-sphere');
+		sphere.id="#sphere";
+		sphere.setAttribute("color", "green");
+		sphere.setAttribute("radius", "1");
+		let cone = document.createElement('a-cone');
+		cone.id="#cone";
+		cone.setAttribute("color", "blue");
+		cone.setAttribute("radius-bottom", "2");
+		cone.setAttribute("radiustop", "0.5");
+		cone.setAttribute("height", "1");
+		marker.appendChild(box);
+		marker.appendChild(sphere);
+		marker.appendChild(cone);
+		box.setAttribute("visible", "true");
+		sphere.setAttribute("visible", "false");
+		cone.setAttribute("visible", "false");
+
+		buttonA.addEventListener('click', () => {
+			box.setAttribute("visible", "true");
+			sphere.setAttribute("visible", "false");
+			cone.setAttribute("visible", "false");
+		});
+		buttonB.addEventListener('click', () => {
+			box.setAttribute("visible", "false");
+			sphere.setAttribute("visible", "true");
+			cone.setAttribute("visible", "false");
+		});
+		buttonC.addEventListener('click', () => {
+			box.setAttribute("visible", "false");
+			sphere.setAttribute("visible", "false");
+			cone.setAttribute("visible", "true");
+		});
+	</script>
+</html>
