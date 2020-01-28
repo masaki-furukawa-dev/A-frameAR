@@ -68,16 +68,19 @@
 		cone.setAttribute("visible", "false");
 
 		buttonA.addEventListener('click', () => {
+			box.setAttribute("position", {x: 0, y: 0, z: 0});
 			box.setAttribute("visible", "true");
 			sphere.setAttribute("visible", "false");
 			cone.setAttribute("visible", "false");
 		});
 		buttonB.addEventListener('click', () => {
+			sphere.setAttribute("position", {x: 0, y: 0, z: 0});
 			box.setAttribute("visible", "false");
 			sphere.setAttribute("visible", "true");
 			cone.setAttribute("visible", "false");
 		});
 		buttonC.addEventListener('click', () => {
+			cone.setAttribute("position", {x: 0, y: 0, z: 0});
 			box.setAttribute("visible", "false");
 			sphere.setAttribute("visible", "false");
 			cone.setAttribute("visible", "true");
