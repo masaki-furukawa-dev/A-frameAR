@@ -47,13 +47,17 @@
 		}
 		.dialog .message {
 			width: 90%;
-			text-align: left;
+			text-align: center;
 		}
 	</style>
 	<body style='margin : 0px; overflow: hidden;'>
 		<a-scene id='#scene' embedded arjs="debugUIEnabled:false;">
+			<a-assets>
+				<a-asset-item id="cityModel" src="city_scene/scene.gltf"></a-asset-item>
+			</a-assets>
 			<a-marker id="#marker" type="pattern" url="pattern-custom.patt">
-				<a-plane id="#dialog" position="0 0.5 0" rotation="-45 0 0" material="shader:html;target:#target;fps:24;width:300;height:500"></a-plane>
+				<a-plane id="#dialog" position="0 0.5 0" rotation="-90 0 0" material="shader:html;target:#target;fps:24;width:300;height:500"></a-plane>
+				<a-entity id="#city" gltf-model="#cityModel"></a-entity>
 			</a-marker>
 			<a-entity camera></a-entity>
 		</a-scene>
@@ -95,29 +99,21 @@
 		cone.setAttribute("radiustop", "0.5");
 		cone.setAttribute("height", "1");
 		cone.setAttribute("position", {x: 0, y: 0.5, z: 0});
-		marker.appendChild(box);
-		marker.appendChild(sphere);
-		marker.appendChild(cone);
-		box.setAttribute("visible", "false");
-		sphere.setAttribute("visible", "false");
-		cone.setAttribute("visible", "false");
 		let dialog = document.getElementById('#dialog');
 		dialog.setAttribute("visible", "true");
+		let city = document.getElementById('#city');
+		city.setAttribute("visible", "false");
+		city..object3D.scale.set(0.01, 0.01, 0.01);
 
 		buttonA.addEventListener('click', () => {
-			box.setAttribute("visible", "true");
-			sphere.setAttribute("visible", "false");
-			cone.setAttribute("visible", "false");
+			dialog.setAttribute("visible", "true");
+			dialog.setAttribute("visible", "false");
 		});
 		buttonB.addEventListener('click', () => {
-			box.setAttribute("visible", "false");
-			sphere.setAttribute("visible", "true");
-			cone.setAttribute("visible", "false");
+			dialog.setAttribute("visible", "false");
+			dialog.setAttribute("visible", "true");
 		});
 		buttonC.addEventListener('click', () => {
-			box.setAttribute("visible", "false");
-			sphere.setAttribute("visible", "false");
-			cone.setAttribute("visible", "true");
 		});
 	</script>
 </html>
